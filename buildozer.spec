@@ -49,6 +49,9 @@ android.ndk = 23c
 # Android SDK 版本
 android.sdk = 30
 
+# 使用预安装的Android SDK
+android.sdk_path = /usr/local/lib/android/sdk
+
 # 应用权限
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 

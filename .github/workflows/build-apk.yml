@@ -44,12 +44,19 @@ jobs:
         echo "Using pre-installed Android SDK"
         echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
         echo "PATH=$PATH:/usr/local/lib/android/sdk/cmdline-tools/latest/bin:/usr/local/lib/android/sdk/platform-tools" >> $GITHUB_ENV
-          
+        
     - name: Install Buildozer and dependencies
       run: |
         pip install buildozer
         pip install python-for-android
         pip install cython
+        
+    - name: Pre-configure Android SDK
+      run: |
+        # 创建buildozer目录结构
+        mkdir -p ~/.buildozer/android/platform/android-sdk/build-tools
+        # 链接预安装的build-tools到buildozer目录
+        ln -sf /usr/local/lib/android/sdk/build-tools/* ~/.buildozer/android/platform/android-sdk/build-tools/ 2>/dev/null || echo "No pre-installed build-tools found"
         
     - name: Initialize Buildozer environment
       run: |
