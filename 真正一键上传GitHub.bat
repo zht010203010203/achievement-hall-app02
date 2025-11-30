@@ -61,34 +61,40 @@ if errorlevel 1 (
 )
 echo OK: Commit successful
 
-REM Set remote repository
-echo [6/6] Setting GitHub remote repository...
-echo.
-echo Steps to follow:
-echo 1. Visit https://github.com/new to create new repository
-echo 2. Repository name: achievement-hall-app
-echo 3. Select Public
-
-echo 4. Do NOT check README (we already have files)
-echo 5. Click Create repository
-echo 6. Copy the HTTPS address of your repository
-echo.
-set /p repo_url="Enter GitHub repository URL: "
-
-if "%repo_url%"=="" (
-    echo ERROR: No repository URL entered
-    pause
-    exit /b 1
-)
-
-echo Setting remote repository: %repo_url%
-git remote add origin %repo_url%
+REM Check if remote repository exists
+echo [6/6] Checking remote repository...
+git remote get-url origin >nul 2>&1
 if errorlevel 1 (
-    echo ERROR: Failed to set remote repository
-    pause
-    exit /b 1
+    echo Remote repository not set, setting up...
+    echo.
+    echo Steps to follow:
+    echo 1. Visit https://github.com/new to create new repository
+    echo 2. Repository name: achievement-hall-app
+    echo 3. Select Public
+    echo 4. Do NOT check README (we already have files)
+    echo 5. Click Create repository
+    echo 6. Copy the HTTPS address of your repository
+    echo.
+    set /p repo_url="Enter GitHub repository URL: "
+    
+    if "%repo_url%"=="" (
+        echo ERROR: No repository URL entered
+        pause
+        exit /b 1
+    )
+    
+    echo Setting remote repository: %repo_url%
+    git remote add origin %repo_url%
+    if errorlevel 1 (
+        echo ERROR: Failed to set remote repository
+        pause
+        exit /b 1
+    )
+    echo OK: Remote repository set successfully
+) else (
+    echo OK: Remote repository already exists
+    git remote get-url origin
 )
-echo OK: Remote repository set successfully
 
 REM Push code
 echo [7/7] Pushing code to GitHub...
