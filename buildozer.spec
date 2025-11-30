@@ -19,7 +19,7 @@ source.include_exts = py,png,jpg,kv,atlas,json,txt
 version = 1.0.0
 
 # 应用依赖
-requirements = python3,kivy==2.2.1,kivymd==1.1.1,requests,cryptography,pillow,sqlite3
+requirements = python3==3.9,kivy==2.2.1,kivymd==1.1.1,requests,cryptography,pillow,sqlite3
 
 # 排除不必要的文件
 source.exclude_exts = spec,md

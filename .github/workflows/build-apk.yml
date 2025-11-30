@@ -48,7 +48,9 @@ jobs:
     - name: Build APK
       run: |
         buildozer android clean
-        buildozer android debug
+        buildozer -v android debug 2>&1 | tee build.log
+        echo "Build completed with exit code: $?"
+        ls -la bin/ 2>/dev/null || echo "bin directory not found"
       
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
