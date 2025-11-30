@@ -46,7 +46,7 @@ jobs:
         
     - name: Initialize Buildozer environment
       run: |
-        buildozer init --force
+        # 跳过init步骤，直接更新环境
         buildozer android update
       
     - name: Build APK
