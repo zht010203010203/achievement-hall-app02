@@ -38,6 +38,12 @@ jobs:
           libsqlite3-dev \
           wget \
           libbz2-dev
+        
+    - name: Accept Android SDK licenses
+      run: |
+        mkdir -p ~/.android
+        touch ~/.android/repositories.cfg
+        yes | sdkmanager --licenses || echo "License acceptance may require manual intervention"
           
     - name: Install Buildozer and dependencies
       run: |
