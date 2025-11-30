@@ -43,7 +43,9 @@ jobs:
       run: |
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
-        yes | sdkmanager --licenses
+        which sdkmanager || echo "sdkmanager not found in PATH"
+        ls -la /usr/local/lib/android/sdk/ || echo "Android SDK directory not found"
+        /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || echo "License acceptance failed, continuing with build"
           
     - name: Install Buildozer and dependencies
       run: |
