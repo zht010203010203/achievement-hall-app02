@@ -93,7 +93,8 @@ if errorlevel 1 (
     echo OK: Remote repository set successfully
 ) else (
     echo OK: Remote repository already exists
-    git remote get-url origin
+    for /f "tokens=*" %%i in ('git remote get-url origin') do set repo_url=%%i
+    echo Current repository: %repo_url%
 )
 
 REM Push code
