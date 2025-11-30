@@ -43,8 +43,8 @@ android.api = 30
 # 最小 API 版本
 android.minapi = 21
 
-# Android NDK 版本
-android.ndk = 23c
+# Android NDK 版本 (使用p4a推荐的版本)
+android.ndk = 25b
 
 # Android SDK 版本
 android.sdk = 30

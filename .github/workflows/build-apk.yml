@@ -54,13 +54,13 @@ jobs:
     - name: Pre-configure Android SDK
       run: |
         # 创建buildozer目录结构
-        mkdir -p ~/.buildozer/android/platform/android-sdk/build-tools
-        # 链接预安装的build-tools到buildozer目录
-        ln -sf /usr/local/lib/android/sdk/build-tools/* ~/.buildozer/android/platform/android-sdk/build-tools/ 2>/dev/null || echo "No pre-installed build-tools found"
+        mkdir -p ~/.buildozer/android/platform/android-sdk
+        # 链接预安装的SDK到buildozer目录
+        ln -sf /usr/local/lib/android/sdk/* ~/.buildozer/android/platform/android-sdk/ 2>/dev/null || echo "Linking SDK failed"
         
     - name: Initialize Buildozer environment
       run: |
-        # 跳过init步骤，直接更新环境
+        # 强制使用预安装的SDK，跳过下载
         buildozer android update
       
     - name: Build APK
