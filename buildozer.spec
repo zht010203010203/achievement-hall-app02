@@ -38,16 +38,16 @@ android.presplash_color = #FFFFFF
 [app:android]
 
 # Android API 版本
-android.api = 33
+android.api = 30
 
 # 最小 API 版本
 android.minapi = 21
 
 # Android NDK 版本
-android.ndk = 25b
+android.ndk = 23c
 
 # Android SDK 版本
-android.sdk = 33
+android.sdk = 30
 
 # 应用权限
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
