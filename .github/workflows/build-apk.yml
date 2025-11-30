@@ -42,8 +42,8 @@ jobs:
     - name: Install Buildozer
       run: pip install buildozer
       
-    - name: Initialize Buildozer
-      run: buildozer init
+    - name: Check Buildozer configuration
+      run: buildozer --version
       
     - name: Build APK
       run: |
